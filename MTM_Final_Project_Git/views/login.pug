@@ -1,0 +1,16 @@
+extends layout.pug
+block content
+    h4=message
+
+    form(action="/Login", method="POST")
+        div
+            label(for="username")="Username: "
+            input(type="text", id="username", name="username")
+        div
+            label(for="password")="Password: "
+            input(type="password", id="password", name="password")
+        input(type="submit", value="Log In")
+    
+    br
+    a(href="/Register")="Don't have an account?"
+    br

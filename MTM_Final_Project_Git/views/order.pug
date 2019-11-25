@@ -1,0 +1,25 @@
+extends layout.pug
+block content
+    form(method="POST")
+        label(for="fullName")="Full Name: "
+        input(type="text", id="fullName", name="fullName")
+        br
+
+        label(for="shipAddr")="Shipping Address: "
+        input(type="text", id="shipAddr", name="shipAddr")
+        br
+        label(for="city")="City: "
+        input(type="text", id="city", name="city")
+        br
+        label(for="state")="State: "
+        input(type="text", id="state", name="state")
+        br
+        label(for="postalCode")="Postal Code: "
+        input(type="text", id="postalCode", name="postalCode")
+        br
+
+        label(for="productID")="Product ID: "
+        input(type="text", id="productID", name="productID" value=itemID)
+        br
+
+        input(type="submit" value="Submit Order")

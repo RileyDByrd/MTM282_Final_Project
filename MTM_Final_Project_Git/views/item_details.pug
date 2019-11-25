@@ -1,0 +1,13 @@
+extends layout.pug
+block content
+    ul
+        li
+            a(href="/Order/" + item._id)
+                img(src=item.imgPath)
+            p="Category: " + item.category
+            p="Name: " + item.name
+            p="Price: " + item.price
+            p="Description: " + item.desc
+            br
+            a(href="/Order/" + item._id)
+                button(type="Button")="Buy Now"

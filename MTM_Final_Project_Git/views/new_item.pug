@@ -1,0 +1,20 @@
+extends layout.pug
+block content
+    form(method="POST")
+        label(for="category")="Category: "
+        input(type="text", id="category", name="category")
+        br
+        label(for="name")="Name: "
+        input(type="text", id="name", name="name")
+        br
+        label(for="imgPath")="Image Path: "
+        input(type="text", id="imgPath", name="imgPath")
+        br
+        label(for="price")="Price: "
+        input(type="text", id="price", name="price")
+        br
+        label(for="desc")="Description: "
+        input(type="text", id="desc", name="desc")
+        br
+
+        input(type="submit" value="Add Item")

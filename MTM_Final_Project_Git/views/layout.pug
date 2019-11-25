@@ -1,0 +1,30 @@
+html
+    head
+        if(title)
+            title="Reality Grab - " + title
+        else
+            title="Reality Grab - " + tabTitle
+        if(css2link)
+            link(href=css2link, rel="stylesheet", type="text/css")
+        link(href="/css/style.css", rel="stylesheet", type="text/css")
+    body
+        nav
+            a(href="/")="Home"
+            a(href="/Items")="Items"
+            if(isAdmin)
+                a(href="/NewItem")="New Item"
+            if(username)
+                a(href="/Logout")="Log Out"
+            else
+                a(href="/Login")="Log In"
+        div(id="IntroBlock")
+            if(title)
+                h1(id="Title")=title
+            else
+                h1(id="Title")=headingTitle
+            br
+            h3(id="Description")=desc
+        main
+            block content
+        footer
+            p="© Riley D. Byrd but not really because it's for school."
