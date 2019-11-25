@@ -1,6 +1,6 @@
 body {
-    color: #fff;
-    background-color: #000;
+    color: #111;
+    background-color: #eee;
 }
 
 nav, main {
@@ -9,12 +9,22 @@ nav, main {
 
 nav a {
     margin: 10px 30px;
-    color: #fff;
     text-decoration: none;
     display: inline-block;
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
+    border-bottom: 4px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+}
+
+nav a:visited {
+    color: #111;
+}
+
+nav a:hover {
+    border-color: #b22;
+    transition: border-color 0.2s;
 }
 
 #IntroBlock {
