@@ -1,0 +1,9 @@
+extends layout.pug
+block content
+    ul
+        for item in items
+            li
+                a(href="/Items/details/" + item._id)
+                    img(src=item.imgPath)
+                p=item.price
+                p=item.desc

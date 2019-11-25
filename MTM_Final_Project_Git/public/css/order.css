@@ -1,0 +1,12 @@
+form {
+    margin-left: 40%;
+    text-align: left;
+}
+
+form * {
+    margin-bottom: 1%;
+}
+
+a {
+    color: #19c;
+}

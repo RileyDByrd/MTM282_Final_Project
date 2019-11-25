@@ -1,0 +1,18 @@
+extends layout.pug
+block content
+    h4=message
+
+    form(action="/Register", method="POST")
+        div
+            label="Name: "
+            input(type="text", name="name")
+        div
+            label="Email: "
+            input(type="text", name="email")
+        div
+            label="Username: "
+            input(type="text", name="username")
+        div
+            label="Password: "
+            input(type="password", name="password")
+        input(type="submit", value="Register")
