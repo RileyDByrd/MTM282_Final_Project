@@ -13,7 +13,9 @@ html
             a(href="/Items")="Items"
             if(isAdmin)
                 a(href="/NewItem")="New Item"
+                a(href="/admin")="AdminCp"
             if(username)
+                a(href="/user")=username
                 a(href="/Logout")="Log Out"
             else
                 a(href="/Login")="Log In"
