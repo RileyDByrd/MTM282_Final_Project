@@ -1,0 +1,19 @@
+extends layout.pug
+block content
+    <section id="boxes">
+    <div class="container">
+    <section id="showcase">
+    <div class="container">
+    div(class="userBox gridBox")
+        div
+            label="Name: "
+            span=user.name
+        div
+            label="Username: "
+            span=user.username
+        div
+            label="Email: "
+            span=user.email
+        div
+            label="Role: "
+            span=user.roles
