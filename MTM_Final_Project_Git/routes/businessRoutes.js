@@ -117,13 +117,21 @@ router.route("/admin").get(
 
 router.route("/toAdmin/:userId").get(
     async function (req, res) {
-        if(!req.session.isAdmin){
+        if(!req.session.isAdmin) {
             res.redirect("/");
-        }else {
+        } else {
             var userId = req.params.userId;
-            var user = await User.findOne({_id:userId});
-            console.log(userId)
-            if (user) {
+            var user = await User.findOne({_id: userId});
+            if(!user.roles.includes("Admin")) {
+                user.roles.push("Admin");
+                User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
+                    if(err) console.log("There is an error.");
+                    console.log(doc);
+                });
+            }
+            res.redirect("/admin");
+            // console.log(userId)
+            // if (user) {
                 //My update code
 
                 //user.update({"_id": req.params.userId, "roles": "User"},
@@ -137,19 +145,19 @@ router.route("/toAdmin/:userId").get(
                 //     if(err) console.log("There is an error.");
                 //     console.log(doc);
                 // });
-                var UsersFromDB = await User.find();
-                var model = {
-                    title: "Admin CP",
-                    users: UsersFromDB,
-                    username : req.session.username,
-                    userId : req.session.userId,
-                    isAdmin : req.session.isAdmin
-                };
-                res.render("admin", model);
+            //     var UsersFromDB = await User.find();
+            //     var model = {
+            //         title: "Admin CP",
+            //         users: UsersFromDB,
+            //         username : req.session.username,
+            //         userId : req.session.userId,
+            //         isAdmin : req.session.isAdmin
+            //     };
+            //     res.render("admin", model);
 
-            } else {
-                res.send("You done messed up! Could not find a user with id: " + userId);
-            }
+            // } else {
+            //     res.send("You done messed up! Could not find a user with id: " + userId);
+            // }
         }
     }
 );
