@@ -7,8 +7,28 @@ const router = express.Router();
 router.route("/Items").get(function(req, res) {
     getItems().then(function(items) {
         // convertJSONToMongo();
+        var column0 = [];
+        var column1 = [];
+        var column2 = [];
+        var itemKeys = Object.keys(items);
+
+        for(let i = 0; i < itemKeys.length; i++) {
+            switch(i % 3) {
+                case 0:
+                    column0.push(items[itemKeys[i]]);
+                    break;
+                case 1:
+                    column1.push(items[itemKeys[i]]);
+                    break;
+                case 2:
+                    column2.push(items[itemKeys[i]]);
+            }
+        }
+
         var model = {
-            items,
+            column0,
+            column1,
+            column2,
             username: req.session.username,
             isAdmin: req.session.isAdmin,
             css2link: "/css/items.css",
