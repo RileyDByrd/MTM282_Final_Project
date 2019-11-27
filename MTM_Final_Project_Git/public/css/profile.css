@@ -1,8 +1,8 @@
-#centering {
+.centering {
     margin-left: 40%;
     text-align: left;
 }
 
-#centering * {
+.centering * {
     margin-bottom: 1%;
 }

@@ -12,9 +12,11 @@ router.route("/Profile").get(async function(req, res) {
             css2link: "/css/profile.css",
             title: "User Profile",
             username: req.session.username,
+            email: req.session.email,
+            name: req.session.name,
             userId: req.session.userId,
             isAdmin: req.session.isAdmin
-        }
+        };
 
         res.render("profile", model);
     } else {
@@ -75,6 +77,8 @@ router.route("/Login").post(async function(req, res) {
         // console.log(user);
         req.session.username = user.username;
         req.session.userId = user._id;
+        req.session.email = user.email;
+        req.session.name = user.name;
         req.session.isAdmin = user.roles.includes("Admin");
 
         // if(req.session.username == "rbyrd") {
@@ -109,6 +113,41 @@ router.route("/Logout").get(function(req, res) {
     req.session.isAdmin = null;
 
     res.redirect("/");
+});
+
+router.route("/Admin").get(async function (req, res) {
+    if(!req.session.isAdmin){
+        res.redirect("/");
+    }else {
+        var UsersFromDB = await User.find();
+
+        var model = {
+            css2link: "/css/profile.css",
+            title: "Admin CP",
+            users: UsersFromDB,
+            username : req.session.username,
+            userId : req.session.userId,
+            isAdmin : req.session.isAdmin
+        };
+        res.render("admin", model);
+    }
+});
+
+router.route("/ToAdmin/:userId").get(async function (req, res) {
+    if(!req.session.isAdmin) {
+        res.redirect("/");
+    } else {
+        var userId = req.params.userId;
+        var user = await User.findOne({_id: userId});
+        if(!user.roles.includes("Admin")) {
+            user.roles.push("Admin");
+            User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
+                if(err) console.log("There is an error.");
+                console.log(doc);
+            });
+        }
+        res.redirect("/Admin");
+    }
 });
 
 module.exports = router;
