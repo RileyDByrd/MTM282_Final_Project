@@ -1,11 +1,17 @@
 extends layout.pug
 block content
-    div(id="centering")
+    div(class="centering")
         label.
             #[strong="Username: "] #{username}
         br
         label.
+            #[strong="Name: "] #{name}
+        br
+        label.
             #[strong="User ID: "] #{userId}
+        br
+        label.
+            #[strong="Email: "] #{email}
         br
         label.
             #[strong="Admin Status: "] #{isAdmin ? "Admin" : "Not Admin"}
