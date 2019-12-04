@@ -13,7 +13,7 @@ mongoose.connect(url, {
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const ItemSchema = new Schema({
+const IdeSchema = new Schema({
         category: String,
         name: String,
         imgPath: String,
@@ -28,19 +28,20 @@ const UserSchema = new Schema(
         email: String,
         username: String,
         password: String,
-        roles: Array
+        roles: Array,
+        ide: Number
     }
 )
 
-const itemCollectionName = "Items";
-const Item = mongoose.model("Item", ItemSchema, itemCollectionName);
+const ideCollectionName = "Ides";
+const Ide = mongoose.model("Ide", IdeSchema, ideCollectionName);
 
 const userCollectionName = "Users";
 const User = mongoose.model("User", UserSchema, userCollectionName)
 
-async function getItems() {
+async function getIdes() {
     try {
-        let categories = await Item.find({}, function() {});
+        let categories = await Ide.find({}, function() {});
 
         return categories;
     } catch (err) {
@@ -48,45 +49,45 @@ async function getItems() {
     }
 }
 
-async function getItemByID(id) {
+async function getIdeByID(id) {
     try {
-        let item = await Item.findById(id);
+        let ide = await Ide.findById(id);
 
-        return item;
+        return ide;
     } catch(err) {
-        console.log("The item with that ID was not found.");
+        console.log("The ide with that ID was not found.");
     }
 }
 
-async function createItem(category, name, imgPath, price, desc) {
+async function createIde(category, name, imgPath, price, desc) {
     try {
-        let newItem = new Item({category: category, name: name, imgPath: imgPath, price: price, desc: desc});
-        let storedItem = await newItem.save();
-        return storedItem;
+        let newIde = new Ide({category: category, name: name, imgPath: imgPath, price: price, desc: desc});
+        let storedIde = await newIde.save();
+        return storedIde;
     } catch(err) {
         console.log(err);
     }
 }
 
 function convertJSONToMongo() {
-    let rawContent = fs.readFileSync("items.json");
+    let rawContent = fs.readFileSync("ides.json");
     let parsedContent = JSON.parse(rawContent).categories;
     for(let cat of Object.keys(parsedContent)) {
-        for(let item of Object.keys(parsedContent[cat])) {
-            let jsItem = parsedContent[cat][item];
-            jsItem["category"] = cat;
-            jsItem["name"] = item;
-            createItem(jsItem["category"], jsItem["name"], jsItem["imgPath"], jsItem["price"], jsItem["desc"]);
+        for(let ide of Object.keys(parsedContent[cat])) {
+            let jsIde = parsedContent[cat][ide];
+            jsIde["category"] = cat;
+            jsIde["name"] = ide;
+            createIde(jsIde["category"], jsIde["name"], jsIde["imgPath"], jsIde["price"], jsIde["desc"]);
         }
     }
 }
 
 module.exports = function() {
     this.mongoose = mongoose;
-    this.Item = Item;
+    this.Ide = Ide;
     this.User = User;
-    this.getItems = getItems;
-    this.getItemByID = getItemByID;
-    this.createItem = createItem;
+    this.getIdes = getIdes;
+    this.getIdeByID = getIdeByID;
+    this.createIde = createIde;
     this.convertJSONToMongo = convertJSONToMongo;
 };
