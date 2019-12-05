@@ -1,22 +1,27 @@
 extends layout.pug
 block content
+    <section id="boxes">
+    <div class="container">
+    <section id="showcase">
+    <div class="container">
     for user in users
-        div(class="centering")
-            label.
-                #[strong="Username: "] #{user.username}
-            br
-            label.
-                #[strong="Name: "] #{user.name}
-            br
-            label.
-                #[strong="User ID: "] #{user._id}
-            br
-            label.
-                #[strong="Email: "] #{user.email}
-            br
-            label.
-                #[strong="Admin Status: "] #{user.roles.includes("Admin") ? "Admin" : "Not Admin"}
-            br
-            a(href="/ToAdmin/" + user._id)="Make admin"
-            br
-            br
+        div(class="userBox gridBox")
+            div(class="userDetails")
+                div(class="title")
+                li
+                    a(href="/toAdmin/" + user.id)="Make admin"
+            div
+                label="name:"
+                span=user.name
+            div
+                label="email:"
+                span=user.email
+            div
+                label="role:"
+                span=user.roles
+            div
+                label="vote:"
+                    if(user.ide)
+                        span=" Option: " + user.ide 
+                    else
+                        span="N/A"

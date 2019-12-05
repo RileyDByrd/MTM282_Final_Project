@@ -1,0 +1,9 @@
+extends layout.pug
+block content
+    ul
+        for ide in ides
+            li
+                a(href="/Ides/details/" + ide._id)
+                    img(src=ide.imgPath)
+                p=ide.price
+                p=ide.desc
