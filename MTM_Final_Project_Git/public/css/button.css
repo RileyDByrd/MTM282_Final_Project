@@ -32,9 +32,12 @@
   transition: all 0.2s ease-out 0s;
 }
 
+
 .red {
   background: dodgerblue;
-  color: black;
+}
+.green {
+  background: rgb(35, 155, 10);
 }
 .blue {
   background: rgb(255, 30, 30);
