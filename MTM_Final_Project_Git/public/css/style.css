@@ -57,3 +57,14 @@ ul {
 footer p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.forms {
+    text-align: right;
+    margin-left: 37%;
+    margin-right: auto;
+    width: 200px;
+  }
+
+.center {
+    margin-left: 44%;
+}
