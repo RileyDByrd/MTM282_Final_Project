@@ -1,9 +1,9 @@
 extends layout.pug
 block content
     //- ul
-    //-     for item in items
+    //-     for item in Ides
     //-         li
-    //-             a(href="/Items/details/" + item._id)
+    //-             a(href="/Ides/details/" + item._id)
     //-                 img(src=item.imgPath)
     //-             p=item.price
     //-             p=item.desc
@@ -12,7 +12,7 @@ block content
             ul
                 for item in column0
                     li
-                        a(href="/Items/details/" + item._id)
+                        a(href="/Ides/details/" + item._id)
                             img(src=item.imgPath)
                         p=item.price
                         p=item.desc
@@ -20,7 +20,7 @@ block content
             ul
                 for item in column1
                     li
-                        a(href="/Items/details/" + item._id)
+                        a(href="/Ides/details/" + item._id)
                             img(src=item.imgPath)
                         p=item.price
                         p=item.desc
@@ -28,7 +28,7 @@ block content
             ul
                 for item in column2
                     li
-                        a(href="/Items/details/" + item._id)
+                        a(href="/Ides/details/" + item._id)
                             img(src=item.imgPath)
                         p=item.price
                         p=item.desc

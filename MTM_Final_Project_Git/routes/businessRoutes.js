@@ -10,30 +10,32 @@ router.route("/Ides").get(function(req, res) {
         var column0 = [];
         var column1 = [];
         var column2 = [];
-        var itemKeys = Object.keys(items);
+        var ideKeys = Object.keys(ides);
 
-        for(let i = 0; i < itemKeys.length; i++) {
+        for(let i = 0; i < ideKeys.length; i++) {
             switch(i % 3) {
                 case 0:
-                    column0.push(items[itemKeys[i]]);
+                    column0.push(ides[ideKeys[i]]);
                     break;
                 case 1:
-                    column1.push(items[itemKeys[i]]);
+                    column1.push(ides[ideKeys[i]]);
                     break;
                 case 2:
-                    column2.push(items[itemKeys[i]]);
+                    column2.push(ides[ideKeys[i]]);
             }
         }
-// columns
+
         var model = {
-            ides,
+            column0,
+            column1,
+            column2,
             username: req.session.username,
             isAdmin: req.session.isAdmin,
             css2link: "/css/ides.css",
             title: "Shop for Ides",
             desc: "All Ides"
         };
-        res.render("Ides", model);
+        res.render("Items", model);
     });
 });
 

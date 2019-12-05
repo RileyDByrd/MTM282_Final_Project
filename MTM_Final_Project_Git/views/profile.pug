@@ -4,16 +4,16 @@ block content
         div(class="userBox gridBox")
             div
                 label="Name: "
-                span=user.name
+                span=name
             div
                 label="Username: "
-                span=user.username
+                span=username
             div
                 label="Email: "
-                span=user.email
+                span=email
             div
-                label="Role: "
-                span=user.roles
+                label="Admin Status: "
+                span=isAdmin
             br
         h3 Best IDE
             form(method='POST' action='/submitForm')
