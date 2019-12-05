@@ -1,5 +1,14 @@
 
-img {
+/* img {
     width: auto !important;
-    height: 50% !important;
+    height: 27% !important;
+} */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 25%;
 }
