@@ -6,8 +6,14 @@ block content
             div
                 label="Name:"
                 span=user.name + " / " + user.username
-            .button.fancy.red
+            .button.fancy.green
                 a.button1(href="/toAdmin/" + user.id)="Make admin"
+            br
+            .button.fancy.blue
+                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
+            br
+            .button.fancy.red
+                a.button2a(href="/suspend/" + user.id)="Suspend User"
             br
             .button.fancy.blue
                 a.button2a(href="/unAdmin/" + user.id)="Remove admin"
