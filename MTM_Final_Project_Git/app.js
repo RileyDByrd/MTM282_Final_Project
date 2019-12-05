@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+require("./database")();
 
 var port = 3000;
 const app = express();
@@ -18,15 +19,23 @@ var authRoutes = require("./routes/authRoutes");
 app.use("/", authRoutes);
 var businessRoutes = require("./routes/businessRoutes");
 app.use("/", businessRoutes);
+
 app.get("/", function(req, res) {
-    var model = {
-        tabTitle: "Reality Grab - Home",
-        headingTitle: "Reality Grab®",
-        desc: "Touch the other side.",
-        username: req.session.username,
-        isAdmin: req.session.isAdmin
-    };
-    res.render("index", model);
+    findQuestionAnswers().then(function(questionAnswers) {
+        console.log(questionAnswers);
+        var model = {
+            css2link: "css/index.css",
+            tabTitle: "Reality Grab - Home",
+            headingTitle: "Reality Grab®",
+            desc: "Touch the other side.",
+            username: req.session.username,
+            isAdmin: req.session.isAdmin,
+            ideData: questionAnswers.ideChoices,
+            languageData: questionAnswers.languageChoices,
+            themeData: questionAnswers.themeChoices
+        };
+        res.render("index", model);
+    });
 });
 
 app.listen(port, function() {

@@ -1,4 +1,14 @@
 extends layout.pug
 block content
     div(id="canvasContainer")
-        canvas(id="canvas")
+        canvas(id="canvas1")
+        canvas(id="canvas2")
+        canvas(id="canvas3")
+    script(type="application/javascript" src="https://www.chartjs.org/dist/2.9.3/Chart.min.js")
+    script(type="application/javascript" src="js/charts.js")
+    script(type="application/javascript").
+        window.onload = function() {
+            makeIdeChart(!{JSON.stringify(ideData)});
+            makeLanguageChart(!{JSON.stringify(languageData)});
+            makeThemeChart(!{JSON.stringify(themeData)});
+        };

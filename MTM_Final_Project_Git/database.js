@@ -71,6 +71,26 @@ async function createIde(category, name, imgPath, price, desc) {
     }
 }
 
+async function findQuestionAnswers() {
+    var separatedResponses = {
+        ideChoices: {1: 0, 2: 0, 3: 0, 4: 0},
+        languageChoices: {1: 0, 2: 0, 3: 0, 4: 0},
+        themeChoices: {1: 0, 2: 0, 3: 0, 4: 0}
+    };
+
+    await User.find({}, "ide language theme", function(err, docs) {
+        if(typeof err != "undefined" && err != null) console.log(err);
+
+        for(var doc of docs) {
+            ++separatedResponses.ideChoices[doc.ide];
+            ++separatedResponses.languageChoices[doc.language];
+            ++separatedResponses.themeChoices[doc.theme];
+        }
+    });
+
+    return separatedResponses;
+}
+
 function convertJSONToMongo() {
     let rawContent = fs.readFileSync("ides.json");
     let parsedContent = JSON.parse(rawContent).categories;
@@ -91,5 +111,6 @@ module.exports = function() {
     this.getIdes = getIdes;
     this.getIdeByID = getIdeByID;
     this.createIde = createIde;
+    this.findQuestionAnswers = findQuestionAnswers;
     this.convertJSONToMongo = convertJSONToMongo;
 };
