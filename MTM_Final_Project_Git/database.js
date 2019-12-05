@@ -26,6 +26,7 @@ const UserSchema = new Schema(
         _id: ObjectId,
         name: String,
         email: String,
+        age: Number,
         username: String,
         password: String,
         roles: Array,
