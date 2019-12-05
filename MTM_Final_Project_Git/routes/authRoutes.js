@@ -13,6 +13,7 @@ router.route("/Profile").get(async function(req, res) {
             title: "User Profile",
             username: req.session.username,
             email: req.session.email,
+            age: req.body.age,
             name: req.session.name,
             userId: req.session.userId,
             isAdmin: req.session.isAdmin
