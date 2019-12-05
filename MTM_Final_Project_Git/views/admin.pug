@@ -8,8 +8,9 @@ block content
         div(class="userBox gridBox")
             div(class="userDetails")
                 div(class="title")
-                li
                     a(href="/toAdmin/" + user.id)="Make admin"
+                    a(href="/unAdmin/" + user.id)="Remove admin"
+
             div
                 label="name:"
                 span=user.name
@@ -20,8 +21,20 @@ block content
                 label="role:"
                 span=user.roles
             div
-                label="vote:"
+                label="Best IDE:"
                     if(user.ide)
                         span=" Option: " + user.ide 
+                    else
+                        span="N/A"
+            div
+                label="Best Language:"
+                    if(user.language)
+                        span=" Option: " + user.language 
+                    else
+                        span="N/A"
+            div
+                label="Best Theme:"
+                    if(user.theme)
+                        span=" Option: " + user.theme
                     else
                         span="N/A"
