@@ -15,55 +15,56 @@ block content
                 label="Admin Status: "
                 span=isAdmin
             br
-            h3 Best IDE
-            div.form-group
-                label(for='eclipse') Eclipse:
-                br
-                input(type='radio', name='resp', value='1')#eclipse
-                br
-                label(for='vscode') Visual Studio Code:
-                br
-                input(type='radio', name='resp', value='2')#vscode
-                br
-                label(for='vs') Visual Studios:
-                br
-                input(type='radio', name='resp', value='3')#vs
-                br
-                label(for='Notepad') Notepad / Notepad ++:
-                br
-                input(type='radio', name='resp', value='4')#Notepad
-            h3 Best Language
-            div.form-group
-                label(for='python') Python:
-                br
-                input(type='radio', name='resp2', value='1')#python
-                br
-                label(for='csharp') C#:
-                br
-                input(type='radio', name='resp2', value='2')#csharp
-                br
-                label(for='Java') Java:
-                br
-                input(type='radio', name='resp2', value='3')#Java
-                br
-                label(for='English') English:
-                br
-                input(type='radio', name='resp2', value='4')#English
-            h3 Best Theme
-            div.form-group
-                label(for='light') Light:
-                br
-                input(type='radio', name='resp3', value='1')#light
-                br
-                label(for='dark') Dark:
-                br
-                input(type='radio', name='resp3', value='2')#dark
-                br
-                label(for='custom') Custom:
-                br
-                input(type='radio', name='resp3', value='3')#custom
-                br
-                label(for='black') Just black..:
-                br
-                input(type='radio', name='resp3', value='4')#black
+            form(action="/submitForm", method="POST")
+                h3 Best IDE
+                div.form-group
+                    label(for='eclipse') Eclipse:
+                    br
+                    input(type='radio', name='resp', value='1')#eclipse
+                    br
+                    label(for='vscode') Visual Studio Code:
+                    br
+                    input(type='radio', name='resp', value='2')#vscode
+                    br
+                    label(for='vs') Visual Studios:
+                    br
+                    input(type='radio', name='resp', value='3')#vs
+                    br
+                    label(for='Notepad') Notepad / Notepad ++:
+                    br
+                    input(type='radio', name='resp', value='4')#Notepad
+                h3 Best Language
+                div.form-group
+                    label(for='python') Python:
+                    br
+                    input(type='radio', name='resp2', value='1')#python
+                    br
+                    label(for='csharp') C#:
+                    br
+                    input(type='radio', name='resp2', value='2')#csharp
+                    br
+                    label(for='Java') Java:
+                    br
+                    input(type='radio', name='resp2', value='3')#Java
+                    br
+                    label(for='English') English:
+                    br
+                    input(type='radio', name='resp2', value='4')#English
+                h3 Best Theme
+                div.form-group
+                    label(for='light') Light:
+                    br
+                    input(type='radio', name='resp3', value='1')#light
+                    br
+                    label(for='dark') Dark:
+                    br
+                    input(type='radio', name='resp3', value='2')#dark
+                    br
+                    label(for='custom') Custom:
+                    br
+                    input(type='radio', name='resp3', value='3')#custom
+                    br
+                    label(for='black') Just black..:
+                    br
+                    input(type='radio', name='resp3', value='4')#black
                 input(type="submit", value="submit")
