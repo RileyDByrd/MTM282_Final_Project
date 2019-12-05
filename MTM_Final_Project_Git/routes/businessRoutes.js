@@ -173,6 +173,23 @@ router.route("/unAdmin/:userId").get(async function (req, res) {
     }
 });
 
+router.route("/unAdmin/:userId").get(async function (req, res) {
+    if(!req.session.isAdmin) {
+        res.redirect("/");
+    } else {
+        var userId = req.params.userId;
+        var user = await User.findOne({_id: userId});
+        if(!user.roles.includes("Admin")) {
+            user.roles = "Suspended";
+            User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
+                if(err) console.log("There is an error.");
+                console.log(doc);
+            });
+        }
+        res.redirect("/Admin");
+    }
+});
+
 router.route("/user").get(
     async function (req, res) {
         if(!req.session.username) {
