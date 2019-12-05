@@ -1,19 +1,16 @@
 extends layout.pug
 block content
-    <section id="boxes">
-    <div class="container">
-    <section id="showcase">
-    <div class="container">
+    link(href="/css/button.css", rel="stylesheet", type="text/css")
     for user in users
-        div(class="userBox gridBox")
-            div(class="userDetails")
-                div(class="title")
-                    a(href="/toAdmin/" + user.id)="Make admin"
-                    a(href="/unAdmin/" + user.id)="Remove admin"
-
+        div(class="userDetails")
             div
-                label="name:"
-                span=user.name
+                label="Name:"
+                span=user.name + " / " + user.username
+            .button.fancy.red
+                a.button1(href="/toAdmin/" + user.id)="Make admin"
+            br
+            .button.fancy.blue
+                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
             div
                 label="email:"
                 span=user.email
