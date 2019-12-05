@@ -29,7 +29,9 @@ const UserSchema = new Schema(
         username: String,
         password: String,
         roles: Array,
-        ide: Number
+        ide: Number,
+        language: Number,
+        theme: Number
     }
 )
 

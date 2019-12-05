@@ -129,7 +129,10 @@ router.route("/Admin").get(async function (req, res) {
             username : req.session.username,
             userId : req.session.userId,
             isAdmin : req.session.isAdmin,
-            ide: req.session.ide
+            ide: req.session.ide,
+            //////////////
+            language: req.body.resp2,
+            theme: req.body.resp3
         };
         res.render("admin", model);
     }
@@ -167,7 +170,10 @@ router.route("/user").get(
                     username: req.session.username,
                     userId: req.session.userId,
                     isAdmin: req.session.isAdmin,
-                    ide: req.session.ide
+                    ide: req.session.ide,
+                    //////////////
+                    language: req.body.resp2,
+                    theme: req.body.resp3
                 }
                 res.render("profile", model);
 
@@ -186,9 +192,17 @@ router.route("/submitForm").post(
         }else {
             var userId = req.session.userId;
             var user = await User.findOne({_id:userId});
+            //
             var result = req.body.resp;
-            req.session.ide = result;
+            var result2 = req.body.resp2;
+            var result3 = req.body.resp3;
             user.ide = result;
+            user.language = result2;
+            user.theme = result3;
+            req.session.ide = result;
+            req.session.language = result2;
+            req.session.theme = result3;
+            //
             User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
                 if(err) console.log("There is an error.");
                 console.log(doc);
@@ -200,7 +214,10 @@ router.route("/submitForm").post(
                     username: req.session.username,
                     userId: req.session.userId,
                     isAdmin: req.session.isAdmin,
-                    ide: req.body.resp
+                    ide: req.body.resp,
+                    //////////////
+                    language: req.body.resp2,
+                    theme: req.body.resp3
                 }
                 res.render("profile", model);
             }

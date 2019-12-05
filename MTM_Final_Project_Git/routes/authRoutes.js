@@ -44,7 +44,10 @@ router.route("/Register").post(function (req, res) {
                 email: req.body.email,
                 username: req.body.username,
                 password: hash,
-                roles: ["User"]
+                roles: ["User"],
+                ide: req.body.resp,
+                language: req.body.resp2,
+                theme: req.body.resp3
             }
         );
         newUser.save();
