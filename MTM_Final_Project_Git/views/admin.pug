@@ -1,18 +1,22 @@
 extends layout.pug
 block content
-    <section id="boxes">
-    <div class="container">
-    <section id="showcase">
-    <div class="container">
+    link(href="/css/button.css", rel="stylesheet", type="text/css")
     for user in users
-        div(class="userBox gridBox")
-            div(class="userDetails")
-                div(class="title")
-                li
-                    a(href="/toAdmin/" + user.id)="Make admin"
+        div(class="userDetails")
             div
-                label="name:"
-                span=user.name
+                label="Name:"
+                span=user.name + " / " + user.username
+            .button.fancy.green
+                a.button1(href="/toAdmin/" + user.id)="Make admin"
+            br
+            .button.fancy.blue
+                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
+            br
+            .button.fancy.red
+                a.button2a(href="/suspend/" + user.id)="Suspend User"
+            br
+            .button.fancy.blue
+                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
             div
                 label="email:"
                 span=user.email
@@ -20,8 +24,20 @@ block content
                 label="role:"
                 span=user.roles
             div
-                label="vote:"
+                label="Best IDE:"
                     if(user.ide)
                         span=" Option: " + user.ide 
+                    else
+                        span="N/A"
+            div
+                label="Best Language:"
+                    if(user.language)
+                        span=" Option: " + user.language 
+                    else
+                        span="N/A"
+            div
+                label="Best Theme:"
+                    if(user.theme)
+                        span=" Option: " + user.theme
                     else
                         span="N/A"
