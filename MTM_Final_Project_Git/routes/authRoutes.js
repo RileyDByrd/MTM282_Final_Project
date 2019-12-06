@@ -167,7 +167,8 @@ router.route("/ToAdmin/:userId").get(async function (req, res) {
 });
 
 router.route("/unAdmin/:userId").get(async function (req, res) {
-    if(!req.session.isAdmin) {
+    var userId = req.params.userId;
+    if(!req.session.isAdmin || req.session.userId == userId) {
         res.redirect("/");
     } else {
         var user = await User.findOne({_id: userId});
