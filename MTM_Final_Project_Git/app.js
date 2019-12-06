@@ -24,7 +24,7 @@ app.get("/", function(req, res) {
     findQuestionAnswers().then(function(questionAnswers) {
         console.log(questionAnswers);
         var model = {
-            css2link: "css/index.css",
+            css2link: "/css/index.css",
             tabTitle: "Ideal IDE - Home",
             headingTitle: "Ideal IDE®",
             desc: "Code best.",

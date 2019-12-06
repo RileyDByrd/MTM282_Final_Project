@@ -86,7 +86,9 @@ router.route("/Login").post(async function(req, res) {
         req.session.email = user.email;
         req.session.name = user.name;
         req.session.isAdmin = user.roles.includes("Admin");
-
+        req.session.ide = user.ide;
+        req.session.language = user.language;
+        req.session.theme = user.theme;
         // if(req.session.username == "rbyrd") {
             // console.log(user);
             // user.roles.push("Admin");
@@ -168,7 +170,6 @@ router.route("/unAdmin/:userId").get(async function (req, res) {
     if(!req.session.isAdmin) {
         res.redirect("/");
     } else {
-        var userId = req.params.userId;
         var user = await User.findOne({_id: userId});
         if(user.roles.includes("Admin")) {
             user.roles = "User";
@@ -200,7 +201,7 @@ router.route("/user").get(
     async function (req, res) {
         if(!req.session.username) {
             res.redirect("/");
-        }else {
+        } else {
             var userId = req.session.userId;
             var user = await User.findOne({_id:userId});
             console.log(user)
@@ -213,8 +214,8 @@ router.route("/user").get(
                     isAdmin: req.session.isAdmin,
                     ide: req.session.ide,
                     //////////////
-                    language: req.body.resp2,
-                    theme: req.body.resp3
+                    language: req.session.language,
+                    theme: req.session.theme
                 }
                 res.render("profile", model);
 

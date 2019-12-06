@@ -28,7 +28,7 @@ nav a:hover {
 }
 
 #IntroBlock {
-    margin-left: 700px;
+    margin-left: 36%;
 }
 
 #IntroBlock * {
@@ -62,7 +62,7 @@ footer p {
     text-align: right;
     margin-left: 37%;
     margin-right: auto;
-    width: 200px;
+    width: 180px;
   }
 
 .center {

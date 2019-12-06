@@ -31,7 +31,7 @@ router.route("/Ides").get(function(req, res) {
             column2,
             username: req.session.username,
             isAdmin: req.session.isAdmin,
-            css2link: "/css/ides.css",
+            css2link: "/css/items.css",
             title: "Shop for IDEs",
             desc: "All IDEs"
         };
