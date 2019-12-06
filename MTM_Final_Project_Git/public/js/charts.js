@@ -1,4 +1,4 @@
-function makeBarChart(rawBarChartData, barNum, barColor, labels) {
+function makeBarChart(rawBarChartData, barNum, barColor, title, labels) {
     console.log(rawBarChartData);
     var canvas = document.getElementById("canvas" + barNum);
     var ctx = canvas.getContext("2d");
@@ -38,7 +38,7 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
             },
             title: {
                 display: true,
-                text: "IDE Preference"
+                text: title
             },
             scales: {
                 yAxes: [{
@@ -62,13 +62,13 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
 }
 
 function makeIdeChart(ideData) {
-    makeBarChart(ideData, 1, "purple", ["Eclipse", "VS Code", "Visual Studio", "Notepad/Notepad++"]);
+    makeBarChart(ideData, 1, "purple", "IDE Preference", ["Eclipse", "VS Code", "Visual Studio", "Notepad/Notepad++"]);
 }
 
 function makeLanguageChart(languageData) {
-    makeBarChart(languageData, 2, "green", ["Python", "C#", "Java", "English"]);
+    makeBarChart(languageData, 2, "green", "Language Preference", ["Python", "C#", "Java", "English"]);
 }
 
 function makeThemeChart(themeData) {
-    makeBarChart(themeData, 3, "blue", ["Light", "Dark", "Custom", "Just Black"]);
+    makeBarChart(themeData, 3, "blue", "Theme Preference", ["Light", "Dark", "Custom", "Just Black"]);
 }
