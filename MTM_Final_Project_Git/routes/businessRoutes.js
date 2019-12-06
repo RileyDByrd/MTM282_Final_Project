@@ -115,116 +115,12 @@ router.route("/NewIde").post(function(req, res) {
         res.sendStatus(401);
     }
 });
-//
-router.route("/Admin").get(async function (req, res) {
-    if(!req.session.isAdmin){
-        res.redirect("/");
-    }else {
-        var UsersFromDB = await User.find();
-
-        var model = {
-            css2link: "/css/profile.css",
-            title: "Admin CP",
-            users: UsersFromDB,
-            username : req.session.username,
-            userId : req.session.userId,
-            isAdmin : req.session.isAdmin,
-            ide: req.session.ide,
-            //////////////
-            language: req.body.resp2,
-            theme: req.body.resp3
-        };
-        res.render("admin", model);
-    }
-});
-
-router.route("/ToAdmin/:userId").get(async function (req, res) {
-    if(!req.session.isAdmin) {
-        res.redirect("/");
-    } else {
-        var userId = req.params.userId;
-        var user = await User.findOne({_id: userId});
-        if(!user.roles.includes("Admin")) {
-            user.roles = "Admin";
-            User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
-                if(err) console.log("There is an error.");
-                console.log(doc);
-            });
-        }
-        res.redirect("/Admin");
-    }
-});
-
-
-router.route("/unAdmin/:userId").get(async function (req, res) {
-    if(!req.session.isAdmin) {
-        res.redirect("/");
-    } else {
-        var userId = req.params.userId;
-        var user = await User.findOne({_id: userId});
-        if(user.roles.includes("Admin")) {
-            user.roles = "User";
-            User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
-                if(err) console.log("There is an error.");
-                console.log(doc);
-            });
-        }
-        res.redirect("/Admin");
-    }
-});
-
-router.route("/unAdmin/:userId").get(async function (req, res) {
-    if(!req.session.isAdmin) {
-        res.redirect("/");
-    } else {
-        var userId = req.params.userId;
-        var user = await User.findOne({_id: userId});
-        if(!user.roles.includes("Admin")) {
-            user.roles = "Suspended";
-            User.findByIdAndUpdate(userId, Object(user), {useFindAndModify: false}, function(err, doc) {
-                if(err) console.log("There is an error.");
-                console.log(doc);
-            });
-        }
-        res.redirect("/Admin");
-    }
-});
-
-router.route("/user").get(
-    async function (req, res) {
-        if(!req.session.username) {
-            res.redirect("/");
-        }else {
-            var userId = req.session.userId;
-            var user = await User.findOne({_id:userId});
-            console.log(user)
-            if (user) {
-                var model = {
-                    title: "User Profile",
-                    user: user,
-                    username: req.session.username,
-                    userId: req.session.userId,
-                    isAdmin: req.session.isAdmin,
-                    ide: req.session.ide,
-                    //////////////
-                    language: req.body.resp2,
-                    theme: req.body.resp3
-                }
-                res.render("profile", model);
-
-            } else {
-                res.send("You done messed up! Could not find a user with id: " + userId);
-            }
-        }
-    }
-);
-
 
 router.route("/submitForm").post(
     async function (req, res) {
         if(!req.session.username) {
             res.redirect("/");
-        }else {
+        } else {
             var userId = req.session.userId;
             var user = await User.findOne({_id:userId});
             //

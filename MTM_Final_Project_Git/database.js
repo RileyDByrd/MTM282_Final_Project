@@ -30,6 +30,7 @@ const UserSchema = new Schema(
         username: String,
         password: String,
         roles: Array,
+        isActive: Boolean,
         ide: Number,
         language: Number,
         theme: Number
