@@ -5,7 +5,7 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
     var color = Chart.helpers.color;
     window.chartColors = {
         blue: "rgb(54, 162, 235)",
-        green: "rgb(75, 192, 192)",
+        green: "rgb(42, 133, 46)",
         grey: "rgb(201, 203, 207)",
         orange: "rgb(255, 159, 64)",
         purple: "rgb(69, 37, 133)",
@@ -22,7 +22,7 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
                 backgroundColor: color(window.chartColors[barColor]).alpha(0.5).rgbString(),
                 borderColor: window.chartColors[barColor],
                 borderWidth: 1,
-                barThickness: "180",
+                barThickness: "60",
                 data: [
                     rawBarChartData["1"],
                     rawBarChartData["2"],
@@ -32,7 +32,6 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
             }]
         },
         options: {
-            responsive: true,
             legend: {
                 position: "top",
                 display: false
@@ -44,20 +43,22 @@ function makeBarChart(rawBarChartData, barNum, barColor, labels) {
             scales: {
                 yAxes: [{
                     ticks: {
-                        fontSize: 26
+                        fontSize: 14
                     }
                 }],
                 xAxes: [{
                     ticks: {
-                        fontSize: 26
+                        fontSize: 14
                     }
                 }]
             }
         }
     });
 
-    canvas.style.width = 500;
-    canvas.style.height = 400;
+    // canvas.style.width = 500;
+    // canvas.style.height = 400;
+    canvas.parentNode.style.width = "400px";
+    canvas.parentNode.style.height = "400px";
 }
 
 function makeIdeChart(ideData) {

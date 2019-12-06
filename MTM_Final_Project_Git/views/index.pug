@@ -1,9 +1,12 @@
 extends layout.pug
 block content
-    div(id="canvasContainer")
-        canvas(id="canvas1")
-        canvas(id="canvas2")
-        canvas(id="canvas3")
+    div(id="canvasesContainer")
+        div
+            canvas(id="canvas1")
+        div
+            canvas(id="canvas2")
+        div
+            canvas(id="canvas3")
     script(type="application/javascript" src="https://www.chartjs.org/dist/2.9.3/Chart.min.js")
     script(type="application/javascript" src="js/charts.js")
     script(type="application/javascript").

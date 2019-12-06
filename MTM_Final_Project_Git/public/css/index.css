@@ -1,4 +1,4 @@
-#canvasContainer {
+#canvasesContainer {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: space-around;
