@@ -32,8 +32,8 @@ router.route("/Ides").get(function(req, res) {
             username: req.session.username,
             isAdmin: req.session.isAdmin,
             css2link: "/css/ides.css",
-            title: "Shop for Ides",
-            desc: "All Ides"
+            title: "Shop for IDEs",
+            desc: "All IDEs"
         };
         res.render("Items", model);
     });
@@ -94,7 +94,7 @@ router.route("/Ides/details/:ideID").get(function(req, res) {
 router.route("/NewIde").get(function(req, res) {
     if(req.session.isAdmin) {
         var model = {
-            title: "New Ide",
+            title: "New IDE",
             css2link: "/css/order.css",
             username: req.session.username,
             isAdmin: req.session.isAdmin

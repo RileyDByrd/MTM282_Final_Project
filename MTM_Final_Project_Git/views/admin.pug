@@ -7,16 +7,13 @@ block content
                 label="Name:"
                 span=user.name + " / " + user.username
             .button.fancy.green
-                a.button1(href="/toAdmin/" + user.id)="Make admin"
+                a.button1(href="/ToAdmin/" + user.id)="Promote"
             br
             .button.fancy.blue
-                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
+                a.button2a(href="/unAdmin/" + user.id)="Demote"
             br
             .button.fancy.red
-                a.button2a(href="/suspend/" + user.id)="Suspend User"
-            br
-            .button.fancy.blue
-                a.button2a(href="/unAdmin/" + user.id)="Remove admin"
+                a.button2a(href="/toggleActive/" + user.id)="Change Active Status"
             div
                 label="email:"
                 span=user.email
@@ -24,7 +21,7 @@ block content
                 label="role:"
                 span=user.roles
             div
-                label:"is active:"
+                label="is active:"
                 span=user.isActive
             div
                 label="Best IDE:"

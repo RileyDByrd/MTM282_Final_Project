@@ -1,9 +1,9 @@
 html
     head
         if(title)
-            title="Reality Grab - " + title
+            title="Ideal IDE - " + title
         else
-            title="Reality Grab - " + tabTitle
+            title="Ideal IDE - " + tabTitle
         if(css2link)
             link(href=css2link, rel="stylesheet", type="text/css")
         link(href="/css/style.css", rel="stylesheet", type="text/css")
@@ -11,12 +11,12 @@ html
         nav
             img(src="/images/logo.png")
             a(href="/")="Home"
-            a(href="/Ides")="Items"
+            a(href="/Ides")="IDEs"
             if(isAdmin)
-                a(href="/NewItem")="New Item"
+                a(href="/NewIde")="New IDE"
                 a(href="/Admin")="AdminCP"
             if(username)
-                a(href="/Profile")=username
+                a(href="/user")=username
                 a(href="/Logout")="Log Out"
             else
                 a(href="/Login")="Log In"

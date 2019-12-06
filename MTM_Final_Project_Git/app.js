@@ -25,9 +25,9 @@ app.get("/", function(req, res) {
         console.log(questionAnswers);
         var model = {
             css2link: "css/index.css",
-            tabTitle: "Reality Grab - Home",
-            headingTitle: "Reality Grab®",
-            desc: "Touch the other side.",
+            tabTitle: "Ideal IDE - Home",
+            headingTitle: "Ideal IDE®",
+            desc: "Code best.",
             username: req.session.username,
             isAdmin: req.session.isAdmin,
             ideData: questionAnswers.ideChoices,

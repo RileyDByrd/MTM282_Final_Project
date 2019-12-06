@@ -98,7 +98,7 @@ router.route("/Login").post(async function(req, res) {
             // console.log(newUser);
         // }
 
-        res.redirect("/Items");
+        res.redirect("/Ides");
     } else {
         req.session.username = null;
         req.session.userId = null;
@@ -106,7 +106,12 @@ router.route("/Login").post(async function(req, res) {
 
         var model = {
             title: "Login Page",
-            message: "Failed Login!"
+            message: "Failed Login!",
+            css2link: "/css/order.css",
+            desc: "Enter your credentials.",
+            username: req.session.username,
+            userId: req.session.userId,
+            isAdmin: req.session.isAdmin
         };
 
         res.render("login", model);
@@ -202,7 +207,7 @@ router.route("/user").get(
             if (user) {
                 var model = {
                     title: "User Profile",
-                    user: user,
+                    user,
                     username: req.session.username,
                     userId: req.session.userId,
                     isAdmin: req.session.isAdmin,
