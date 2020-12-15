@@ -1,0 +1,8 @@
+.centering {
+    margin-left: 40%;
+    text-align: left;
+}
+
+.centering * {
+    margin-bottom: 1%;
+}

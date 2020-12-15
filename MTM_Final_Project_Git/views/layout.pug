@@ -1,0 +1,33 @@
+html
+    head
+        if(title)
+            title="Ideal IDE - " + title
+        else
+            title="Ideal IDE - " + tabTitle
+        if(css2link)
+            link(href=css2link, rel="stylesheet", type="text/css")
+        link(href="/css/style.css", rel="stylesheet", type="text/css")
+    body
+        nav
+            img(src="/images/logo.png")
+            a(href="/")="Home"
+            a(href="/Ides")="IDEs"
+            if(isAdmin)
+                a(href="/NewIde")="New IDE"
+                a(href="/Admin")="AdminCP"
+            if(username)
+                a(href="/user")=username
+                a(href="/Logout")="Log Out"
+            else
+                a(href="/Login")="Log In"
+        div(id="IntroBlock")
+            if(title)
+                h1(id="Title")=title
+            else
+                h1(id="Title")=headingTitle
+            br
+            h3(id="Description")=desc
+        main
+            block content
+        footer
+            p="© Riley D. Byrd and Daylan Hoff but not really because it's for school."

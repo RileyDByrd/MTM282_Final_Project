@@ -1,0 +1,34 @@
+extends layout.pug
+block content
+    //- ul
+    //-     for item in Ides
+    //-         li
+    //-             a(href="/Ides/details/" + item._id)
+    //-                 img(src=item.imgPath)
+    //-             p=item.price
+    //-             p=item.desc
+    div(class="row")
+        div(class="column")
+            ul
+                for item in column0
+                    li
+                        a(href="/Ides/details/" + item._id)
+                            img(src=item.imgPath)
+                        p=item.price
+                        p=item.desc
+        div(class="column")
+            ul
+                for item in column1
+                    li
+                        a(href="/Ides/details/" + item._id)
+                            img(src=item.imgPath)
+                        p=item.price
+                        p=item.desc
+        div(class="column")
+            ul
+                for item in column2
+                    li
+                        a(href="/Ides/details/" + item._id)
+                            img(src=item.imgPath)
+                        p=item.price
+                        p=item.desc
